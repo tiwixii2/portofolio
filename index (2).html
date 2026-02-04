@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiwi Dharma Nelyanti - Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .font-body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 25%, #fbcfe8 50%, #f9a8d4 100%);
+    }
+    
+    .card-gradient {
+      background: linear-gradient(145deg, #ffffff 0%, #fdf2f8 100%);
+    }
+    
+    .text-gradient {
+      background: linear-gradient(135deg, #db2777 0%, #9333ea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    
+    .skill-bar {
+      transition: width 1.5s ease-out;
+    }
+    
+    .hover-lift {
+      transition: all 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(219, 39, 119, 0.15);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #db2777, #9333ea);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .blob {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: morph 8s ease-in-out infinite;
+    }
+    
+    @keyframes morph {
+      0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+    
+    .sparkle {
+      animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body class="h-full font-body">
+  <div id="app-wrapper" class="w-full h-full overflow-auto gradient-bg">
+    
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/70 shadow-sm">
+      <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#home" class="font-display text-2xl font-bold text-gradient" id="site-name">Tiwi Dharma</a>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-pink-100 transition-colors">
+          <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex items-center gap-8">
+          <li><a href="#home" class="nav-link text-gray-700 hover:text-pink-600 transition-colors font-medium">Home</a></li>
+          <li><a href="#about" class="nav-link text-gray-700 hover:text-pink-600 transition-colors font-medium">About</a></li>
+          <li><a href="#skills" class="nav-link text-gray-700 hover:text-pink-600 transition-colors font-medium">Skills</a></li>
+          <li><a href="#portfolio" class="nav-link text-gray-700 hover:text-pink-600 transition-colors font-medium">Portfolio</a></li>
+          <li><a href="#contact" class="nav-link text-gray-700 hover:text-pink-600 transition-colors font-medium">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-pink-100">
+        <ul class="px-6 py-4 space-y-4">
+          <li><a href="#home" class="block text-gray-700 hover:text-pink-600 transition-colors font-medium">Home</a></li>
+          <li><a href="#about" class="block text-gray-700 hover:text-pink-600 transition-colors font-medium">About</a></li>
+          <li><a href="#skills" class="block text-gray-700 hover:text-pink-600 transition-colors font-medium">Skills</a></li>
+          <li><a href="#portfolio" class="block text-gray-700 hover:text-pink-600 transition-colors font-medium">Portfolio</a></li>
+          <li><a href="#contact" class="block text-gray-700 hover:text-pink-600 transition-colors font-medium">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <p class="slide-up delay-1 text-pink-600 font-medium mb-2" id="hero-greeting">Halo, saya</p>
+          <h1 class="slide-up delay-2 font-display text-4xl md:text-6xl font-bold text-gray-800 mb-4" id="hero-name">
+            Tiwi Dharma Nelyanti
+          </h1>
+          <p class="slide-up delay-3 text-xl md:text-2xl text-purple-600 font-medium mb-6" id="hero-tagline">🎤 Penyanyi & Penulis</p>
+          <p class="slide-up delay-4 text-gray-600 text-lg leading-relaxed mb-8" id="hero-description">
+            Siswa kelas 12 SMAN 1 Subang yang memiliki minat di bidang olahraga, bernyanyi, membaca dan menulis.
+          </p>
+          <div class="slide-up delay-5 flex flex-wrap gap-4">
+            <a href="#portfolio" class="px-8 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium rounded-full hover:shadow-lg hover:shadow-pink-300/50 transition-all transform hover:scale-105">
+              Lihat Portfolio
+            </a>
+            <a href="#contact" class="px-8 py-3 border-2 border-pink-500 text-pink-600 font-medium rounded-full hover:bg-pink-50 transition-all">
+              Hubungi Saya
+            </a>
+          </div>
+        </div>
+        
+        <div class="order-1 md:order-2 flex justify-center">
+          <div class="relative">
+            <div class="blob w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-pink-400 to-purple-500 floating flex items-center justify-center">
+              <div class="text-center text-white">
+                <div class="text-6xl md:text-8xl mb-2">👩‍🎤</div>
+                <p class="font-display text-xl font-semibold">Tiwi</p>
+              </div>
+            </div>
+            <div class="absolute -top-4 -right-4 w-12 h-12 bg-yellow-300 rounded-full sparkle flex items-center justify-center text-2xl">✨</div>
+            <div class="absolute -bottom-2 -left-6 w-10 h-10 bg-pink-300 rounded-full sparkle delay-1 flex items-center justify-center text-xl">🎵</div>
+            <div class="absolute top-1/2 -right-8 w-8 h-8 bg-purple-300 rounded-full sparkle delay-2 flex items-center justify-center text-lg">📚</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Tentang Saya</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+        
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="card-gradient rounded-3xl p-8 shadow-xl hover-lift">
+            <h3 class="font-display text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-3">
+              <span class="text-3xl">👋</span> Latar Belakang
+            </h3>
+            <p class="text-gray-600 leading-relaxed" id="about-text">
+              Nama saya Tiwi Dharma Nelyanti, biasa dipanggil Tiwi. Hobi saya bernyanyi. 
+              Lahir di Subang, 14 November 2007. Saya anak kedua dari 3 bersaudara.
+            </p>
+          </div>
+          
+          <div class="card-gradient rounded-3xl p-8 shadow-xl hover-lift">
+            <h3 class="font-display text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-3">
+              <span class="text-3xl">🎯</span> Minat & Tujuan
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-pink-100 text-pink-700 rounded-full font-medium">👩‍⚕️ Dokter</span>
+              <span class="px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-medium">👮‍♀️ Polisi</span>
+              <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-medium">🎤 Penyanyi</span>
+              <span class="px-4 py-2 bg-green-100 text-green-700 rounded-full font-medium">✍️ Penulis</span>
+            </div>
+          </div>
+          
+          <div class="card-gradient rounded-3xl p-8 shadow-xl hover-lift">
+            <h3 class="font-display text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-3">
+              <span class="text-3xl">🎓</span> Pendidikan
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 bg-pink-500 rounded-full mt-2"></span>
+                <div>
+                  <p class="font-medium text-gray-800">TK</p>
+                  <p class="text-gray-600 text-sm">PAUD Dahlia</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 bg-purple-500 rounded-full mt-2"></span>
+                <div>
+                  <p class="font-medium text-gray-800">SD</p>
+                  <p class="text-gray-600 text-sm">SDIT Al Hidayah</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 bg-blue-500 rounded-full mt-2"></span>
+                <div>
+                  <p class="font-medium text-gray-800">SMP</p>
+                  <p class="text-gray-600 text-sm">NU Daarul Ma'arif Kaplongan Indramayu</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="w-2 h-2 bg-green-500 rounded-full mt-2"></span>
+                <div>
+                  <p class="font-medium text-gray-800">SMA</p>
+                  <p class="text-gray-600 text-sm">SMAN 1 Subang (Kelas 12)</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="card-gradient rounded-3xl p-8 shadow-xl hover-lift">
+            <h3 class="font-display text-2xl font-semibold text-gray-800 mb-4 flex items-center gap-3">
+              <span class="text-3xl">🏆</span> Pengalaman Organisasi
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3">
+                <span class="text-2xl">🎶</span>
+                <p class="text-gray-600">Paduan Suara SMP</p>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-2xl">👥</span>
+                <p class="text-gray-600">Organisasi Sekolah SMP</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-white/50">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Keahlian Saya</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+        
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Hard Skills -->
+          <div class="card-gradient rounded-3xl p-8 shadow-xl">
+            <h3 class="font-display text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+              <span class="text-3xl">💪</span> Hard Skills
+            </h3>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium text-gray-700">🎤 Menyanyi</span>
+                  <span class="text-pink-600 font-semibold">90%</span>
+                </div>
+                <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full bg-gradient-to-r from-pink-500 to-purple-600 rounded-full" style="width: 90%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium text-gray-700">✍️ Menulis</span>
+                  <span class="text-pink-600 font-semibold">85%</span>
+                </div>
+                <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full bg-gradient-to-r from-pink-500 to-purple-600 rounded-full" style="width: 85%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium text-gray-700">📖 Membaca</span>
+                  <span class="text-pink-600 font-semibold">88%</span>
+                </div>
+                <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full bg-gradient-to-r from-pink-500 to-purple-600 rounded-full" style="width: 88%"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium text-gray-700">⚽ Olahraga</span>
+                  <span class="text-pink-600 font-semibold">75%</span>
+                </div>
+                <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div class="skill-bar h-full bg-gradient-to-r from-pink-500 to-purple-600 rounded-full" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Soft Skills -->
+          <div class="card-gradient rounded-3xl p-8 shadow-xl">
+            <h3 class="font-display text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
+              <span class="text-3xl">🧠</span> Soft Skills
+            </h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-pink-50 rounded-2xl p-4 text-center hover-lift cursor-default">
+                <span class="text-4xl mb-2 block">💬</span>
+                <p class="font-medium text-gray-700">Komunikasi</p>
+              </div>
+              <div class="bg-purple-50 rounded-2xl p-4 text-center hover-lift cursor-default">
+                <span class="text-4xl mb-2 block">🤝</span>
+                <p class="font-medium text-gray-700">Kerja Tim</p>
+              </div>
+              <div class="bg-blue-50 rounded-2xl p-4 text-center hover-lift cursor-default">
+                <span class="text-4xl mb-2 block">🎨</span>
+                <p class="font-medium text-gray-700">Kreativitas</p>
+              </div>
+              <div class="bg-green-50 rounded-2xl p-4 text-center hover-lift cursor-default">
+                <span class="text-4xl mb-2 block">⏰</span>
+                <p class="font-medium text-gray-700">Manajemen Waktu</p>
+              </div>
+              <div class="bg-yellow-50 rounded-2xl p-4 text-center hover-lift cursor-default">
+                <span class="text-4xl mb-2 block">🎯</span>
+                <p class="font-medium text-gray-700">Fokus</p>
+              </div>
+              <div class="bg-red-50 rounded-2xl p-4 text-center hover-lift cursor-default">
+                <span class="text-4xl mb-2 block">💖</span>
+                <p class="font-medium text-gray-700">Empati</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Portfolio & Karya</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Portfolio Item 1 -->
+          <div class="card-gradient rounded-3xl overflow-hidden shadow-xl hover-lift group">
+            <div class="h-48 bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center">
+              <span class="text-6xl group-hover:scale-110 transition-transform">🎤</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-semibold text-gray-800 mb-2">Paduan Suara</h3>
+              <p class="text-gray-600 text-sm mb-4">Pengalaman bernyanyi dalam paduan suara sekolah dan berbagai acara.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-pink-100 text-pink-700 text-xs rounded-full">Vokal</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">Grup</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Portfolio Item 2 -->
+          <div class="card-gradient rounded-3xl overflow-hidden shadow-xl hover-lift group">
+            <div class="h-48 bg-gradient-to-br from-blue-400 to-cyan-500 flex items-center justify-center">
+              <span class="text-6xl group-hover:scale-110 transition-transform">✍️</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-semibold text-gray-800 mb-2">Karya Tulis</h3>
+              <p class="text-gray-600 text-sm mb-4">Koleksi tulisan, puisi, dan karya kreatif lainnya.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">Puisi</span>
+                <span class="px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full">Cerita</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Portfolio Item 3 -->
+          <div class="card-gradient rounded-3xl overflow-hidden shadow-xl hover-lift group">
+            <div class="h-48 bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+              <span class="text-6xl group-hover:scale-110 transition-transform">📚</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-semibold text-gray-800 mb-2">Aktivitas Membaca</h3>
+              <p class="text-gray-600 text-sm mb-4">Rekomendasi buku dan review bacaan favorit.</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-green-100 text-green-700 text-xs rounded-full">Review</span>
+                <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs rounded-full">Literasi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-white/50">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Hubungi Saya</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-pink-500 to-purple-600 mx-auto mb-12 rounded-full"></div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Contact Info -->
+          <div class="card-gradient rounded-3xl p-8 shadow-xl">
+            <h3 class="font-display text-xl font-semibold text-gray-800 mb-6">Info Kontak</h3>
+            <div class="space-y-4">
+              <a href="#" class="flex items-center gap-4 p-4 bg-pink-50 rounded-2xl hover:bg-pink-100 transition-colors">
+                <span class="text-3xl">📧</span>
+                <div>
+                  <p class="font-medium text-gray-800">Email</p>
+                  <p class="text-gray-600 text-sm">tiwi.dharma@email.com</p>
+                </div>
+              </a>
+              <a href="#" class="flex items-center gap-4 p-4 bg-green-50 rounded-2xl hover:bg-green-100 transition-colors">
+                <span class="text-3xl">💬</span>
+                <div>
+                  <p class="font-medium text-gray-800">WhatsApp</p>
+                  <p class="text-gray-600 text-sm">+62 xxx xxxx xxxx</p>
+                </div>
+              </a>
+              <a href="#" class="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl hover:bg-purple-100 transition-colors">
+                <span class="text-3xl">📸</span>
+                <div>
+                  <p class="font-medium text-gray-800">Instagram</p>
+                  <p class="text-gray-600 text-sm">@tiwidharma</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Contact Form -->
+          <div class="card-gradient rounded-3xl p-8 shadow-xl">
+            <h3 class="font-display text-xl font-semibold text-gray-800 mb-6">Kirim Pesan</h3>
+            <form id="contact-form" class="space-y-4">
+              <div>
+                <label for="name" class="block text-gray-700 font-medium mb-2">Nama</label>
+                <input type="text" id="name" name="name" required
+                  class="w-full px-4 py-3 border-2 border-pink-200 rounded-xl focus:border-pink-500 focus:outline-none transition-colors"
+                  placeholder="Nama Anda">
+              </div>
+              <div>
+                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                <input type="email" id="email" name="email" required
+                  class="w-full px-4 py-3 border-2 border-pink-200 rounded-xl focus:border-pink-500 focus:outline-none transition-colors"
+                  placeholder="email@contoh.com">
+              </div>
+              <div>
+                <label for="message" class="block text-gray-700 font-medium mb-2">Pesan</label>
+                <textarea id="message" name="message" rows="4" required
+                  class="w-full px-4 py-3 border-2 border-pink-200 rounded-xl focus:border-pink-500 focus:outline-none transition-colors resize-none"
+                  placeholder="Tulis pesan Anda..."></textarea>
+              </div>
+              <button type="submit"
+                class="w-full py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium rounded-xl hover:shadow-lg hover:shadow-pink-300/50 transition-all transform hover:scale-[1.02]">
+                Kirim Pesan ✨
+              </button>
+              <p id="form-success" class="hidden text-center text-green-600 font-medium py-2">
+                ✅ Pesan berhasil dikirim! Terima kasih.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 px-6 bg-gray-900 text-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="text-center md:text-left">
+            <p class="font-display text-xl font-semibold mb-2">Tiwi Dharma Nelyanti</p>
+            <p class="text-gray-400 text-sm" id="footer-text">© 2025 Tiwi Dharma. All rights reserved.</p>
+          </div>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-pink-500 transition-colors">
+              <span class="text-xl">📸</span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+              <span class="text-xl">🔗</span>
+            </a>
+            <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-green-500 transition-colors">
+              <span class="text-xl">💬</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  </div>
+  
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      site_name: 'Tiwi Dharma',
+      tagline: '🎤 Penyanyi & Penulis',
+      hero_greeting: 'Halo, saya',
+      hero_name: 'Tiwi Dharma Nelyanti',
+      hero_description: 'Siswa kelas 12 SMAN 1 Subang yang memiliki minat di bidang olahraga, bernyanyi, membaca dan menulis.',
+      about_text: 'Nama saya Tiwi Dharma Nelyanti, biasa dipanggil Tiwi. Hobi saya bernyanyi. Lahir di Subang, 14 November 2007. Saya anak kedua dari 3 bersaudara.',
+      footer_text: '© 2025 Tiwi Dharma. All rights reserved.',
+      background_color: '#fdf2f8',
+      surface_color: '#ffffff',
+      text_color: '#1f2937',
+      primary_action_color: '#db2777',
+      secondary_action_color: '#9333ea',
+      font_family: 'Poppins',
+      font_size: 16
+    };
+    
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+    
+    // Contact form handling
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+    
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      formSuccess.classList.remove('hidden');
+      contactForm.reset();
+      setTimeout(() => {
+        formSuccess.classList.add('hidden');
+      }, 3000);
+    });
+    
+    // Element SDK initialization
+    async function onConfigChange(config) {
+      const siteName = document.getElementById('site-name');
+      const heroGreeting = document.getElementById('hero-greeting');
+      const heroName = document.getElementById('hero-name');
+      const heroTagline = document.getElementById('hero-tagline');
+      const heroDescription = document.getElementById('hero-description');
+      const aboutText = document.getElementById('about-text');
+      const footerText = document.getElementById('footer-text');
+      
+      if (siteName) siteName.textContent = config.site_name || defaultConfig.site_name;
+      if (heroGreeting) heroGreeting.textContent = config.hero_greeting || defaultConfig.hero_greeting;
+      if (heroName) heroName.textContent = config.hero_name || defaultConfig.hero_name;
+      if (heroTagline) heroTagline.textContent = config.tagline || defaultConfig.tagline;
+      if (heroDescription) heroDescription.textContent = config.hero_description || defaultConfig.hero_description;
+      if (aboutText) aboutText.textContent = config.about_text || defaultConfig.about_text;
+      if (footerText) footerText.textContent = config.footer_text || defaultConfig.footer_text;
+      
+      // Apply font family
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.querySelectorAll('.font-body, p, span, a, li, label, input, textarea, button').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, Poppins, sans-serif`;
+      });
+      
+      // Apply font size scaling
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.querySelectorAll('p, span, li').forEach(el => {
+        if (!el.classList.contains('text-xl') && !el.classList.contains('text-2xl')) {
+          el.style.fontSize = `${baseSize}px`;
+        }
